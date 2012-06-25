@@ -11,7 +11,7 @@ class Annotation < Striuct
     [:unknown,             :space_separated        ], # 1 # 
     [:writer,              :prior_notice_byte      ], # 2 # 
     [:message,             :prior_notice_byte      ], # 3 # 
-  ].map{|row|Field.load_values(*row).freeze}.freeze
+  ].map{|row|Entry::Field.load_values(*row).freeze}.freeze
 
   VALID_FIELD_NAMES = (FIELDS.map(&:first).
                       reject{|s|s == :unknown} + [:unknowns]).freeze

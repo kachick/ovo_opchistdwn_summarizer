@@ -5,7 +5,7 @@ require 'logger'
 require 'csv'
 require 'lettercase'
 require 'lettercase/ext'
-require 'openviewoperations/opchistdwn'
+require_relative '../lib/openviewoperations/opchistdwn'
 
 class Time
   remove_method :to_s
@@ -29,7 +29,9 @@ module OVO_OpcHistDwn_Summarizer
   class << self
 
     def run
-      abort 'usage: this.rb opchistdwn.result [path2..pathN]' unless ARGV.length >= 1
+      unless ARGV.length >= 1
+        abort "usage: #{$PROGRAM_NAME} opchistdwn.result [path2..pathN]"
+      end
       
       ARGV.each do |path|
         logger = Logger.new "#{path}.summarize.log"
