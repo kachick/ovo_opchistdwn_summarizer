@@ -9,7 +9,7 @@ $hoe = Hoe.spec 'ovo_opchistdwn_summarizer' do
   self.rubyforge_name       = name
   require_ruby_version '>= 1.9.3'
   dependency 'striuct', '~> 0.3.0', :runtime
-  dependency 'lettercase', '~> 0.0.3', :runtime
+  dependency 'lettercase', '~> 0.0.2', :runtime
   dependency 'yard', '>= 0.8.1', :development
 end
 

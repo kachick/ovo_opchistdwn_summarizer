@@ -30,7 +30,7 @@ See the header of opchistdwn
 
 * striuct - 0.3.0
 
-* lettercase - 0.0.3
+* lettercase - 0.0.2
 
 == Installation
 
