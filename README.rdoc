@@ -6,7 +6,7 @@ gem  :: https://rubygems.org/gems/ovo_opchistdwn_summarizer
 
 == Description
 
-An utility for "OpenViewOperations".
+An utility for the OVO(OpenViewOperations).
 Convert to some CSV files from result of "opchistdwn".
 
 == Feutures
