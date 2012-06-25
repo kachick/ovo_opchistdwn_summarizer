@@ -1,0 +1,45 @@
+= ovo_opchistdwn_summarizer
+
+code :: https://github.com/kachick/ovo_opchistdwn_summarizer
+bugs :: https://github.com/kachick/ovo_opchistdwn_summarizer/issues
+gem  :: https://rubygems.org/gems/ovo_opchistdwn_summarizer
+
+== Description
+
+An utility for "OpenViewOperations".
+Convert to some CSV files from result of "opchistdwn".
+
+== Feutures
+
+* Supportting formatted version is "Version 4".
+  See the header of opchistdwn
+  
+      > head opchistdwn-result
+
+== Usage
+
+    > ovo_opchistdwn_summarizer opchistdwn-result [*opchistdwn-results]
+
+== Requirements
+
+* Ruby 1.9.3
+  
+  Focusing
+  
+  * 1.9.3-p194
+
+* striuct - 0.3.0
+
+* lettercase - 0.0.3
+
+== Installation
+
+* gem install ovo_opchistdwn_summarizer
+
+== License
+
+GPL v3
+
+Copyright (c) 2010-2012 Kenichi Kamiya
+
+See the file COPYING for further details.

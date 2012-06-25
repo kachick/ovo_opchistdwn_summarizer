@@ -1,0 +1,62 @@
+#!/usr/local/bin/ruby -w
+# Copyright (c) 2010-2012  Kenichi Kamiya
+
+require 'logger'
+require 'csv'
+require 'lettercase'
+require 'lettercase/ext'
+require 'openviewoperations/opchistdwn'
+
+class Time
+  remove_method :to_s
+  
+  def to_s
+    strftime "%Y/%m/%d %H:%M:%S"
+  end
+end
+
+include OpenViewOperations
+
+module OVO_OpcHistDwn_Summarizer
+
+  VERSION = '0.0.1'
+
+  CSV_OPTIONS = {
+    headers: OpcHistDwn::Entry.members.map{|sym|sym.pascalcase},
+    write_headers: true
+  }
+
+  class << self
+
+    def run
+      abort 'usage: this.rb opchistdwn.result [path2..pathN]' unless ARGV.length >= 1
+      
+      ARGV.each do |path|
+        logger = Logger.new "#{path}.summarize.log"
+        logger.progname = :'OVO OpcHistDwn Summarizer'
+        
+        CSV.open "#{path}.summary.csv", 'w:windows-31j', CSV_OPTIONS do |csv|
+        CSV.open "#{path}.summary.oneline.csv", 'w:windows-31j', CSV_OPTIONS do |oneline_csv|
+          begin
+            OpcHistDwn.foreach path, 'windows-31j' do |entry|
+              csv << entry
+              oneline_csv << entry.map{|v|(/\n/ === v) ? v.to_s.gsub("\n", '\n') : v}
+            end
+          rescue OpcHistDwn::Entry::Parser::MalformedError => e
+            logger.error "some errors\n#{e}"
+          rescue Exception => e
+            logger.fatal "critical errors\n#{e}"
+            raise
+          else
+            logger.info 'Complete'
+          end
+        end
+        end
+      end
+    end
+    
+  end
+
+end
+
+OVO_OpcHistDwn_Summarizer.run
