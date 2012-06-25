@@ -11,10 +11,10 @@ Convert to some CSV files from result of "opchistdwn".
 
 == Feutures
 
-* Supportting formatted version is "Version 4".
-  See the header of opchistdwn
+Supportting formatted version is "Version 4".
+See the header of opchistdwn
   
-      > head opchistdwn-result
+    > head opchistdwn-result
 
 == Usage
 
