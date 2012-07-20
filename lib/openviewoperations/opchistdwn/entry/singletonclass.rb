@@ -6,6 +6,7 @@ module OpenViewOperations; module OpcHistDwn
 
     class << self
 
+      # @return [Entry]
       def parse(str)
         self::Parser.new(str).parse
       end

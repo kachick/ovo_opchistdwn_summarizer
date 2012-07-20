@@ -7,7 +7,9 @@ module OpenViewOperations; module OpcHistDwn
   class DumpFile < ::File
 
     class << self
-
+      
+      # @param [String] path
+      # @param [String] encoding
       def foreach(path, encoding)
         open path, "rb:#{encoding}" do |input|
           input.each_entry do |entry|
@@ -26,6 +28,7 @@ module OpenViewOperations; module OpcHistDwn
       warn "Version #{@version} is illegal." unless FORMAT_VERSION == @version
     end
 
+    # @return [String]
     def get_section
       gets SEPARATOR
     end
@@ -36,10 +39,12 @@ module OpenViewOperations; module OpcHistDwn
       end
     end
 
+    # @return [String]
     def seek_version
       gets(SEPARATOR).slice(/Version (\S+)/, 1)
     end
 
+    # @return [Entry]
     def get_entry
       Entry.parse get_section
     end

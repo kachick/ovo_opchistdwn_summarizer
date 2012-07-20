@@ -21,12 +21,14 @@ module OpenViewOperations; module OpcHistDwn; class Entry
       16 => :Minor,
       32 => :Major
     }.freeze
-
+    
+    # @param [String] str
     def initialize(str)
       @scanner = StringScanner.new str
       @field_pointer = 0
     end
-
+    
+    # @return [Entry]
     def parse
       Entry.define do |entry|
         trim_separator
@@ -55,6 +57,7 @@ module OpenViewOperations; module OpcHistDwn; class Entry
       end
     end
 
+    # @return [Array]
     def values
       valids.map{|name|__send__ name}
     end
