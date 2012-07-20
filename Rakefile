@@ -10,7 +10,7 @@ $hoe = Hoe.spec 'ovo_opchistdwn_summarizer' do
   require_ruby_version '>= 1.9.3'
   dependency 'striuct', '~> 0.3.0', :runtime
   dependency 'lettercase', '~> 0.0.2', :runtime
-  dependency 'yard', '>= 0.8.1', :development
+  dependency 'yard', '>= 0.8.2.1', :development
 end
 
 require 'newgem/tasks'

@@ -1,3 +1,9 @@
+2012/07/20
+
+  * Modify generating error-log timing. 
+  * Add for CMA
+  * Fix for inner EOF(0x1a)
+
 2010 ~ 2012
 
   * 0.0.1

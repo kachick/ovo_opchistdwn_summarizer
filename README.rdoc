@@ -2,12 +2,11 @@
 
 code :: https://github.com/kachick/ovo_opchistdwn_summarizer
 bugs :: https://github.com/kachick/ovo_opchistdwn_summarizer/issues
-gem  :: https://rubygems.org/gems/ovo_opchistdwn_summarizer
 
 == Description
 
-An utility for the OVO(OpenViewOperations).
-Convert to some CSV files from result of "opchistdwn".
+A utility for the OVO(OpenViewOperations).
+"opchistdwn" to some CSV files.
 
 == Feutures
 
@@ -22,14 +21,8 @@ See the header of opchistdwn
 
 == Requirements
 
-* Ruby 1.9.3
-  
-  Focusing
-  
-  * 1.9.3-p194
-
+* Ruby 1.9.3 or later
 * striuct - 0.3.0
-
 * lettercase - 0.0.2
 
 == Installation
