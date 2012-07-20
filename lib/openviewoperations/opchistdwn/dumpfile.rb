@@ -1,7 +1,5 @@
 # Copyright (c) 2010-2012  Kenichi Kamiya
 
-require 'strscan'
-
 module OpenViewOperations; module OpcHistDwn
   
   class DumpFile < ::File

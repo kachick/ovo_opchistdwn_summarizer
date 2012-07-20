@@ -1,6 +1,7 @@
 # Copyright (c) 2010-2012  Kenichi Kamiya
 
 require 'forwardable'
+require 'strscan'
 
 module OpenViewOperations; module OpcHistDwn; class Entry
 
