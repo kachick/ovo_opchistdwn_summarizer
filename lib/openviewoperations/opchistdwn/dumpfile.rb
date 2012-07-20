@@ -9,7 +9,7 @@ module OpenViewOperations; module OpcHistDwn
     class << self
 
       def foreach(path, encoding)
-        open path, "r:#{encoding}" do |input|
+        open path, "rb:#{encoding}" do |input|
           input.each_entry do |entry|
             yield entry
           end
