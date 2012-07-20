@@ -4,8 +4,8 @@ require 'striuct'
 
 module OpenViewOperations; module OpcHistDwn 
 
-class Entry < Striuct
-end
+  class Entry < Striuct
+  end
 
 end; end
 

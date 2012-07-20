@@ -2,16 +2,16 @@
 
 module OpenViewOperations; module OpcHistDwn 
 
-class Entry
+  class Entry
 
-  class << self
+    class << self
 
-    def parse(str)
-      self::Parser.new(str).parse
+      def parse(str)
+        self::Parser.new(str).parse
+      end
+
     end
 
   end
-
-end
   
 end; end
