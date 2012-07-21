@@ -3,6 +3,7 @@ COPYING
 Manifest.txt
 Rakefile
 History.txt
+lib/ovo_opchistdwn_summarizer.rb
 lib/openviewoperations/opchistdwn.rb
 lib/openviewoperations/opchistdwn/entry.rb
 lib/openviewoperations/opchistdwn/dumpfile.rb

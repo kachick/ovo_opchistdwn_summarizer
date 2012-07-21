@@ -1,72 +1,10 @@
 #!/usr/local/bin/ruby -w
 # Copyright (c) 2010-2012  Kenichi Kamiya
 
-require 'logger'
-require 'csv'
-require 'lettercase'
-require 'lettercase/ext'
-require_relative '../lib/openviewoperations/opchistdwn'
+require_relative '../lib/ovo_opchistdwn_summarizer'
 
-class Time
-  remove_method :to_s
-  
-  def to_s
-    strftime "%Y/%m/%d %H:%M:%S"
-  end
+unless ARGV.length >= 1
+  abort "usage: #{$PROGRAM_NAME} opchistdwn.result [*opchistdwn.results]"
 end
 
-include OpenViewOperations
-
-module OVO_OpcHistDwn_Summarizer
-
-  VERSION = '0.0.2'
-
-  CSV_OPTIONS = {
-    headers: OpcHistDwn::Entry.members.map{|sym|sym.pascalcase},
-    write_headers: true
-  }
-
-  class << self
-
-    def run
-      unless ARGV.length >= 1
-        abort "usage: #{$PROGRAM_NAME} opchistdwn.result [path2..pathN]"
-      end
-      
-      ARGV.each do |path|       
-        CSV.open "#{path}.summary.csv", 'w:windows-31j', CSV_OPTIONS do |csv|
-        CSV.open "#{path}.summary.oneline.csv", 'w:windows-31j', CSV_OPTIONS do |oneline_csv|
-          begin
-            OpcHistDwn.foreach path, 'windows-31j' do |entry|
-              csv << entry
-              oneline_csv << entry.map{|v|(/\n/ === v) ? v.to_s.gsub("\n", '\n') : v}
-            end
-          rescue OpcHistDwn::Entry::Parser::MalformedError => e
-            logger = Logger.new "#{path}.summarize-error.log"
-            logger.progname = :'OVO OpcHistDwn Summarizer'
-            logger.error "some errors\n#{e}"
-            display(path, 'Error')
-          rescue Exception => e
-            logger = Logger.new "#{path}.summarize-error.log"
-            logger.progname = :'OVO OpcHistDwn Summarizer'
-            logger.fatal "critical errors\n#{e}"
-            display(path, 'Critical Error')
-          else
-            display(path, 'Complete')
-          end
-        end
-        end
-      end
-    end
-
-    private
-
-    def display(path, msg)
-      $stderr.puts "#{path}: #{msg}"
-    end
-
-  end
-
-end
-
-OVO_OpcHistDwn_Summarizer.run
+OVO_OpcHistDwn_Summarizer.run ARGV
