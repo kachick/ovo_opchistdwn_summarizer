@@ -16,9 +16,10 @@ end
 
 module OVO_OpcHistDwn_Summarizer
 
+  extend OpenViewOperations
   include OpenViewOperations
 
-  VERSION = '0.0.2'.freeze
+  VERSION = '0.0.2.1'.freeze
 
   CSV_OPTIONS = {
     headers: OpcHistDwn::Entry.members.map{|sym|sym.pascalcase},
@@ -28,9 +29,13 @@ module OVO_OpcHistDwn_Summarizer
   class << self
 
     def run(pathnames)
-      pathnames.each do |path|       
+      pathnames.each do |path|
+   
         CSV.open "#{path}.summary.csv", 'w:windows-31j', CSV_OPTIONS do |csv|
-        CSV.open "#{path}.summary.oneline.csv", 'w:windows-31j', CSV_OPTIONS do |oneline_csv|
+        CSV.open "#{path}.summary.oneline.csv",
+                 'w:windows-31j',
+                  CSV_OPTIONS do |oneline_csv|
+
           begin
             OpcHistDwn.foreach path, 'windows-31j' do |entry|
               csv << entry
@@ -49,8 +54,10 @@ module OVO_OpcHistDwn_Summarizer
           else
             display(path, 'Complete')
           end
+
         end
         end
+
       end
     end
 
