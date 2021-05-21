@@ -1,16 +1,17 @@
 = ovo_opchistdwn_summarizer
 
-code :: https://github.com/kachick/ovo_opchistdwn_summarizer
-bugs :: https://github.com/kachick/ovo_opchistdwn_summarizer/issues
+* <em><b>This repository is archived</b></em>
+* <em><b>No longer maintained</b></em>
+* <em><b>All versions have been yanked from https://rubygems.org for releasing valuable namespace for others</b></em>
 
 == Description
 
 A utility for the OVO(OpenViewOperations).
 "opchistdwn" to some CSV files.
 
-== Feutures
+== Features
 
-Supportting formatted version is "Version 4".
+Supporting formatted version is "Version 4".
 See the header of opchistdwn
   
     > head opchistdwn-result
@@ -24,10 +25,6 @@ See the header of opchistdwn
 * Ruby 1.9.3 or later
 * striuct - 0.3.0
 * lettercase - 0.0.2
-
-== Installation
-
-* gem install ovo_opchistdwn_summarizer
 
 == License
 
